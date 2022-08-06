@@ -3,5 +3,5 @@ import localStyles from "./Footer.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 type Props = {};
 export default function Footer({}: Props) {
-  return <div> Footer </div>;
+  return <div className={localStyles.footDiv}> Footer </div>;
 }

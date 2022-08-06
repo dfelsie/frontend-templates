@@ -5,10 +5,18 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 type Props = {
   children?: ReactNode;
+  color?: string;
+  textColor?: string;
 };
-export default function Layout({ children }: Props) {
+export default function Layout({ children, color, textColor }: Props) {
   return (
-    <div className={localStyles.layout}>
+    <div
+      className={localStyles.layout}
+      style={{
+        backgroundColor: color,
+        color: textColor,
+      }}
+    >
       <Navbar />
       <div className={localStyles.body}>{children}</div>
       <Footer />
