@@ -1,0 +1,14 @@
+.layout {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  height: 100%;
+  flex-grow: 1;
+}
