@@ -13,8 +13,8 @@ export default function Layout({ children, color, textColor }: Props) {
     <div
       className={localStyles.layout}
       style={{
-        backgroundColor: color,
-        color: textColor,
+        backgroundColor: color ?? "white",
+        color: textColor ?? "black",
       }}
     >
       <Navbar />

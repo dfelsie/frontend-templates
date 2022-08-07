@@ -1,0 +1,22 @@
+.actionButton {
+  border: none;
+  width: 100px;
+  height: 35px;
+  border-radius: 25px;
+  background-color: var(--paradise);
+  color: whitesmoke;
+  cursor: pointer;
+}
+.nextImage {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nextImageContainer {
+  height: 50%;
+  width: 50%;
+  position: relative;
+}

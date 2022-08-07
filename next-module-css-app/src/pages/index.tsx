@@ -5,7 +5,7 @@ import colorConsts from "../consts/colorConsts";
 type Props = {};
 export default function Index({}: Props) {
   return (
-    <Layout color={"white"} textColor="black">
+    <Layout>
       <Home />
     </Layout>
   );

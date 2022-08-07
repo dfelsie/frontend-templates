@@ -1,0 +1,24 @@
+.profBod {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.profBod > * {
+  margin-right: auto;
+  margin-left: auto;
+}
+.profPicCard {
+  width: 90%;
+  background-color: blue;
+  height: 250px;
+}
+
+.profSpace {
+  height: 50px;
+}
+
+.profDetails {
+  width: 90%;
+  background-color: violet;
+  height: 600px;
+}
