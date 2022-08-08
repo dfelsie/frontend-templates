@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  color: whitesmoke;
 }
 .profBod > * {
   margin-right: auto;
@@ -10,7 +11,10 @@
 .profPicCard {
   width: 90%;
   background-color: blue;
-  height: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .profSpace {
@@ -21,4 +25,18 @@
   width: 90%;
   background-color: violet;
   height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.profAvatar {
+  height: 100px;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50px;
+  overflow: hidden;
 }

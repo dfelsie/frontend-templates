@@ -7,7 +7,7 @@
   color: whitesmoke;
   cursor: pointer;
 }
-.nextImage {
+.nextImg {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -15,8 +15,6 @@
   left: 0;
 }
 
-.nextImageContainer {
-  height: 50%;
-  width: 50%;
+.nextImgCont {
   position: relative;
 }
