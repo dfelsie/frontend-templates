@@ -28,7 +28,7 @@ export default function Modal({
         }}
       >
         {children}
-      </div>{" "}
+      </div>
     </div>
   );
 }

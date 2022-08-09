@@ -19,11 +19,11 @@ export default function Navbar({}: Props) {
           }}
         >
           Sign up
-          <SignUpModal
-            setModalVisible={setsignUpModalVisible}
-            modalVisible={signUpModalVisible}
-          />
         </button>
+        <SignUpModal
+          setModalVisible={setsignUpModalVisible}
+          modalVisible={signUpModalVisible}
+        />
         <button
           className={sharedStyles.actionButton}
           onClick={() => {
@@ -31,17 +31,20 @@ export default function Navbar({}: Props) {
           }}
         >
           Log in
-          <LogInModal
-            setModalVisible={setlogInModalVisible}
-            modalVisible={logInModalVisible}
-          />
         </button>
+        {/* Putting the modal in the button causes weird errors lmao */}
+        <LogInModal
+          setModalVisible={setlogInModalVisible}
+          modalVisible={logInModalVisible}
+        />
       </div>{" "}
       <div className={localStyles.linkGrp}>
-        <a href="/bing">Link 1</a>
-        <a>Link 2</a>
-        <a>Link 3</a>
-        <a>Link 4</a>
+        <a className="aniLink" href="/bing">
+          Link 1
+        </a>
+        <a className="aniLink">Link 2</a>
+        <a className="aniLink">Link 3</a>
+        <a className="aniLink">Link 4</a>
       </div>
     </div>
   );

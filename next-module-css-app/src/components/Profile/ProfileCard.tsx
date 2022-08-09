@@ -4,8 +4,11 @@ import sharedStyles from "../../sharedStyles.module.css";
 import Image from "next/image";
 import joinClasses from "../../utils/joinClasses";
 import Modal from "../Modal/Modal";
+import { useRouter } from "next/router";
+import Link from "next/link";
 type Props = {};
 export default function ProfileCard({}: Props) {
+  const router = useRouter();
   return (
     <div className={localStyles.profBod}>
       {" "}
@@ -19,12 +22,28 @@ export default function ProfileCard({}: Props) {
           <Image src={"/assets/images/kobu.jpg"} layout="fill" />
         </div>
         <h2>Johnathon L'Astname</h2>
+        <h4>{router.query.id}</h4>
       </div>
       <div className={localStyles.profSpace}></div>
       <div className={localStyles.profDetails}>
-        <div>Blogs</div>
-        <div>Follows</div>
-        <div>Following</div>
+        <Link href={`${router.query.id}/blogs`}>
+          <div className={localStyles.viewMoreRow}>
+            <h4>Blogs</h4>
+            <h4>View All</h4>
+          </div>
+        </Link>
+        <Link href={`${router.query.id}/follows`}>
+          <div className={localStyles.viewMoreRow}>
+            <h4>Follows</h4>
+            <h4>View All</h4>
+          </div>
+        </Link>
+        <Link href={`${router.query.id}/following`}>
+          <div className={localStyles.viewMoreRow}>
+            <h4>Following</h4>
+            <h4>View All</h4>
+          </div>
+        </Link>
       </div>{" "}
     </div>
   );

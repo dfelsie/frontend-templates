@@ -10,12 +10,71 @@
   cursor: default;
 }
 
+.modalBack > div {
+  margin-top: 25px;
+}
+
 .modalFormBody {
-  width: 90%;
+  border-radius: 30px;
+  width: clamp(270px, 66%, 750px);
   margin-top: 10%;
   height: 500px;
   margin-right: auto;
   margin-left: auto;
   background: rgba(255, 255, 255, 1);
   color: black;
+  position: relative;
+  padding-top: 25px;
+}
+
+.modalFormBody > h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--amethyst);
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.myForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.myForm input {
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.myForm input:focus {
+  outline: none;
+
+  border: 2px solid skyblue;
+}
+
+.myForm label {
+  margin-left: 2px;
+}
+
+.subButt {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 75%;
+  height: 30px;
+}
+
+.closeDiv {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  color: var(--paradise);
+  font-size: 1.5rem;
 }

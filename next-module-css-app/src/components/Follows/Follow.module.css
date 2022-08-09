@@ -1,0 +1,18 @@
+.followGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media only screen and (min-width: 480px) {
+  .followGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.profAvatar {
+  height: 100px;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50px;
+  overflow: hidden;
+}

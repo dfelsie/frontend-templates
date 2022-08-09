@@ -1,9 +1,33 @@
 .footDiv {
-  height: 75px;
+  height: 200px;
   width: 100%;
-  padding-right: 10%;
+  padding-right: 5%;
   padding-left: 5%;
-  padding-top: 25px;
-  position: absolute;
+  padding-bottom: 25px;
   bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  overflow-y: hidden;
+  background-color: var(--denim);
+  color: var(--offwhite);
+}
+
+.footerCol {
+}
+
+.footerCol h5 {
+  height: min-content;
+}
+.footerCol h6 {
+  height: min-content;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.footerCol ul {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
 }
