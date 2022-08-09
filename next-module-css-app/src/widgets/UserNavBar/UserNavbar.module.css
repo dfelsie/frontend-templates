@@ -1,0 +1,19 @@
+.userNavDiv {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+}
+.userNavDiv hr {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.butGrp {
+  display: flex;
+}
+
+.linkBut {
+  background-color: lightgray;
+  color: darkslategrey;
+}

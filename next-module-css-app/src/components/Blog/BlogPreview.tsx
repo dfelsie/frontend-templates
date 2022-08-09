@@ -3,6 +3,7 @@ import localStyles from "./Blog.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import BlogGrid from "./BlogGrid";
 import { Blog } from "../../types/Blog";
+import BlogSec from "./BlogSec";
 
 type Props = {
   blogs: Blog[];
@@ -11,7 +12,10 @@ export default function BlogPreview({ blogs }: Props) {
   return (
     <div>
       {" "}
-      <BlogGrid blogList={blogs} />{" "}
+      {blogs.map((val, i) => (
+        <BlogSec blog={val} key={`blogSec${i}`} />
+      ))}
+      {/*       <BlogGrid blogList={blogs} />{" "} */}
     </div>
   );
 }
