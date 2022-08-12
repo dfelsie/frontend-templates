@@ -7,8 +7,14 @@ type Props = {
   children?: ReactNode;
   color?: string;
   textColor?: string;
+  userEmail?: string;
 };
-export default function Layout({ children, color, textColor }: Props) {
+export default function Layout({
+  children,
+  color,
+  textColor,
+  userEmail,
+}: Props) {
   return (
     <div
       className={localStyles.layout}
@@ -17,7 +23,7 @@ export default function Layout({ children, color, textColor }: Props) {
         color: textColor ?? "black",
       }}
     >
-      <Navbar />
+      <Navbar userEmail={userEmail} />
       <div className={localStyles.body}>{children}</div>
       <Footer />
     </div>

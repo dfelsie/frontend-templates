@@ -1,4 +1,4 @@
-export const backendRoute = "http://localhost:3011";
+export const backendRoute = "http://localhost:3011/api/v1";
 
 export const fakeUserData = {
   id: "48983980",

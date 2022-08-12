@@ -1,43 +1,57 @@
 import React, { useEffect, useState } from "react";
 import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
-import { useFormik } from "formik";
+import { Field, Form, Formik, useFormik } from "formik";
 import joinClasses from "../../utils/joinClasses";
+import { backendRoute } from "../../consts/consts";
+import makeFetch from "../../utils/makeFetch";
 type Props = {};
 export default function LoginForm({}: Props) {
-  const formik = useFormik({
-    initialValues: { email: "", password: "" },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
   return (
-    <form className={localStyles.myForm}>
-      <label htmlFor="email">Email Address</label>
+    <Formik
+      initialValues={{
+        username: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+      }}
+      onSubmit={async (values) => {
+        console.log("Bungus");
+        const { email, password } = values;
+        const fetchFun = makeFetch(
+          backendRoute + "/auth/login",
+          { email: email, password: password },
+          "POST"
+        );
+        const bleh = await fetchFun();
+        console.log(bleh);
+        window.location.reload();
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form className={localStyles.myForm}>
+          <label htmlFor="email">Email Address</label>
 
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      <label htmlFor="password">Password</label>
+          <Field name="email" type="email" />
+          <label htmlFor="password">Password</label>
 
-      <input
-        id="password"
-        name="password"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
+          <Field name="password" type="password" />
 
-      <button
-        type="submit"
-        className={joinClasses(sharedStyles.actionButton, localStyles.subButt)}
-      >
-        Submit
-      </button>
-    </form>
+          <button
+            className={joinClasses(
+              sharedStyles.actionButton,
+              localStyles.subButt
+            )}
+            type="submit"
+            onClick={(e) => {
+              //window.location.reload();
+              //e.preventDefault();
+            }}
+          >
+            Submit
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 }

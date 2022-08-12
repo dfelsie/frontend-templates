@@ -8,7 +8,7 @@ type Props = {};
 export default function Profile({}: Props) {
   const router = useRouter();
   return (
-    <Layout>
+    <Layout userEmail={user}>
       <ProfileCard />
     </Layout>
   );

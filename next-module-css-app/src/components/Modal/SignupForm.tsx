@@ -1,67 +1,62 @@
 import React, { useEffect, useState } from "react";
 import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
-import { useFormik } from "formik";
+import { Field, Form, Formik, useFormik } from "formik";
 import joinClasses from "../../utils/joinClasses";
+import makeFetch from "../../utils/makeFetch";
+import { backendRoute } from "../../consts/consts";
 type Props = {};
 export default function SignupForm({}: Props) {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      confirmPassword: "",
-      username: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
   return (
-    <form className={localStyles.myForm}>
-      <label htmlFor="email">Email Address</label>
+    <Formik
+      initialValues={{
+        username: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+      }}
+      onSubmit={async (values) => {
+        console.log("Bungus");
+        const { email, password, username: name } = values;
+        const fetchFun = makeFetch(
+          backendRoute + "/auth/register",
+          { email: email, password: password, name: name },
+          "POST"
+        );
+        await fetchFun();
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form className={localStyles.myForm}>
+          <label htmlFor="email">Email Address</label>
 
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      <label htmlFor="password">Password</label>
+          <Field name="email" type="email" />
+          <label htmlFor="password">Password</label>
 
-      <input
-        id="password"
-        name="password"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
-      <label htmlFor="confirmPassword">Confirm Password</label>
+          <Field name="password" type="password" />
+          <label htmlFor="confirmPassword">Confirm Password</label>
 
-      <input
-        id="confirmPassword"
-        name="confirmPassword"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.confirmPassword}
-      />
+          <Field name="confirmPassword" type="password" />
 
-      <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username</label>
 
-      <input
-        id="username"
-        name="username"
-        type="username"
-        onChange={formik.handleChange}
-        value={formik.values.username}
-      />
+          <Field name="username" />
 
-      <button
-        className={joinClasses(sharedStyles.actionButton, localStyles.subButt)}
-        type="submit"
-      >
-        Submit
-      </button>
-    </form>
+          <button
+            className={joinClasses(
+              sharedStyles.actionButton,
+              localStyles.subButt
+            )}
+            type="submit"
+            onClick={(e) => {
+              //window.location.reload();
+              //e.preventDefault();
+            }}
+          >
+            Submit
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 }

@@ -18,3 +18,12 @@
 .nextImgCont {
   position: relative;
 }
+
+.profAvatar {
+  height: 100px;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50px;
+  overflow: hidden;
+}

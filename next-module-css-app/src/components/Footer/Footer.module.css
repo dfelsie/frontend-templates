@@ -17,11 +17,15 @@
 
 .footerCol h5 {
   height: min-content;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 .footerCol h6 {
   height: min-content;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 1.2rem;
 }
 
 .footerCol ul {

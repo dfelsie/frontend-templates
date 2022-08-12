@@ -4,40 +4,17 @@ import sharedStyles from "../../sharedStyles.module.css";
 import Modal from "../Modal/Modal";
 import SignUpModal from "../Modal/SignUpModal";
 import LogInModal from "../Modal/LogInModal";
-type Props = {};
-export default function Navbar({}: Props) {
-  const [signUpModalVisible, setsignUpModalVisible] = useState(false);
-  const [logInModalVisible, setlogInModalVisible] = useState(false);
+import ButtonGroup from "./ButtonGroup";
+import { useRouter } from "next/router";
+type Props = {
+  userEmail?: string;
+};
+export default function Navbar({ userEmail }: Props) {
+  const router = useRouter();
   return (
     <div className={localStyles.navDiv}>
       {" "}
-      <div className={localStyles.butGrp}>
-        <button
-          className={sharedStyles.actionButton}
-          onClick={() => {
-            setsignUpModalVisible(true);
-          }}
-        >
-          Sign up
-        </button>
-        <SignUpModal
-          setModalVisible={setsignUpModalVisible}
-          modalVisible={signUpModalVisible}
-        />
-        <button
-          className={sharedStyles.actionButton}
-          onClick={() => {
-            setlogInModalVisible(true);
-          }}
-        >
-          Log in
-        </button>
-        {/* Putting the modal in the button causes weird errors lmao */}
-        <LogInModal
-          setModalVisible={setlogInModalVisible}
-          modalVisible={logInModalVisible}
-        />
-      </div>{" "}
+      <ButtonGroup userEmail={userEmail} router={router} />
       <div className={localStyles.linkGrp}>
         <a className="aniLink" href="/bing">
           Link 1
