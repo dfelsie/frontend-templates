@@ -6,6 +6,7 @@ import SignUpModal from "../Modal/SignUpModal";
 import LogInModal from "../Modal/LogInModal";
 import ButtonGroup from "./ButtonGroup";
 import { useRouter } from "next/router";
+import joinClasses from "../../utils/joinClasses";
 type Props = {
   userEmail?: string;
 };
@@ -16,12 +17,12 @@ export default function Navbar({ userEmail }: Props) {
       {" "}
       <ButtonGroup userEmail={userEmail} router={router} />
       <div className={localStyles.linkGrp}>
-        <a className="aniLink" href="/bing">
-          Link 1
+        <a className={joinClasses("aniLink", localStyles.navLink)} href="/bing">
+          Blogs
         </a>
-        <a className="aniLink">Link 2</a>
-        <a className="aniLink">Link 3</a>
-        <a className="aniLink">Link 4</a>
+        <a className={joinClasses("aniLink", localStyles.navLink)}>Link 2</a>
+        <a className={joinClasses("aniLink", localStyles.navLink)}>Link 3</a>
+        <a className={joinClasses("aniLink", localStyles.navLink)}>Link 4</a>
       </div>
     </div>
   );

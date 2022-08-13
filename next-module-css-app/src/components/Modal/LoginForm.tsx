@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
-import { Field, Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import joinClasses from "../../utils/joinClasses";
 import { backendRoute } from "../../consts/consts";
 import makeFetch from "../../utils/makeFetch";
+import * as Yup from "yup";
+
+const LoginSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+});
 type Props = {};
 export default function LoginForm({}: Props) {
+  const [isEmail, setIsEmail] = useState(true);
   return (
     <Formik
       initialValues={{
-        username: "",
         password: "",
-        confirmPassword: "",
         email: "",
       }}
+      validationSchema={LoginSchema}
       onSubmit={async (values) => {
         console.log("Bungus");
         const { email, password } = values;
@@ -23,19 +32,41 @@ export default function LoginForm({}: Props) {
           { email: email, password: password },
           "POST"
         );
-        const bleh = await fetchFun();
-        console.log(bleh);
-        window.location.reload();
+        fetchFun().then(() => {
+          window.location.reload();
+        });
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, errors, touched }) => (
         <Form className={localStyles.myForm}>
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email" aria-required="true">
+            Email Address
+          </label>
+          <Field
+            className={
+              touched.email && errors.email ? localStyles.inputErr : ""
+            }
+            name="email"
+            type={isEmail ? "email" : "string"}
+          />
+          <div className={localStyles.errDiv}>
+            {touched.email ? errors.email : ""}
+          </div>
 
-          <Field name="email" type="email" />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" aria-required="true">
+            Password
+          </label>
+          <Field
+            className={
+              touched.password && errors.password ? localStyles.inputErr : ""
+            }
+            name="password"
+            type="password"
+          />
 
-          <Field name="password" type="password" />
+          <div className={localStyles.errDiv}>
+            {touched.password ? errors.password : ""}
+          </div>
 
           <button
             className={joinClasses(
@@ -43,7 +74,7 @@ export default function LoginForm({}: Props) {
               localStyles.subButt
             )}
             type="submit"
-            onClick={(e) => {
+            onClick={async (e) => {
               //window.location.reload();
               //e.preventDefault();
             }}

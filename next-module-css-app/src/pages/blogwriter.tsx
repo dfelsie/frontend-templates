@@ -1,23 +1,21 @@
 import { GetServerSideProps } from "next";
-import React, { useEffect, useState } from "react";
-import Home from "../components/Home/Home";
+import React from "react";
+import BlogPreview from "../components/Blog/BlogPreview";
 import Layout from "../components/Layout/Layout";
-import colorConsts from "../consts/colorConsts";
-import { useUser } from "../utils/hooks/useUser";
+import { fakeUserData } from "../consts/consts";
 import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
+import UserNavbar from "../widgets/UserNavBar/UserNavbar";
+
 type Props = {
   userData: any;
 };
-export default function Index({ userData }: Props) {
-  //const [user, { mutate }] = useUser();
+
+export default function blogwriter({ userData }: Props) {
   const userEmail = userData?.email;
 
-  return (
-    <Layout userEmail={userEmail}>
-      <Home />
-    </Layout>
-  );
+  return <Layout userEmail={userEmail}></Layout>;
 }
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userData = await serverSideSessionReq(context);
   console.log(userData, "Ud");

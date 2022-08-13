@@ -14,13 +14,7 @@ export default function MyProfileCard({ userEmail }: Props) {
   const router = useRouter();
 
   return (
-    <div
-      className={localStyles.profBod}
-      onClick={async () => {
-        const userData2 = await sessionReq();
-        console.log(userData2, "UD2");
-      }}
-    >
+    <div className={localStyles.profBod}>
       {" "}
       <div className={joinClasses(localStyles.profPicCard)}>
         <div

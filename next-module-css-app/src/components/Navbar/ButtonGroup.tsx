@@ -13,7 +13,7 @@ export default function ButtonGroup({ userEmail, router }: Props) {
   const [signUpModalVisible, setsignUpModalVisible] = useState(false);
   const [logInModalVisible, setlogInModalVisible] = useState(false);
   let buttonBody;
-  if (!!userEmail) {
+  if (!userEmail) {
     buttonBody = (
       <>
         <button
@@ -48,8 +48,10 @@ export default function ButtonGroup({ userEmail, router }: Props) {
       <button
         className={sharedStyles.actionButton}
         onClick={async () => {
-          await logoutReq();
-          router.push("/");
+          logoutReq().then(() => {
+            window.location.reload();
+          });
+          //router.push("/");
           //setsignUpModalVisible(true);
         }}
       >

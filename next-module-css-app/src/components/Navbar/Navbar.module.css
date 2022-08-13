@@ -21,4 +21,5 @@
   width: clamp(250px, 45%, 450px);
   display: flex;
   justify-content: space-around;
+  font-size: 1.1rem;
 }

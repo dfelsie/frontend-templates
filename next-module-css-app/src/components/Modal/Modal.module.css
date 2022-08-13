@@ -16,22 +16,24 @@
 
 .modalFormBody {
   border-radius: 30px;
-  width: clamp(270px, 66%, 750px);
-  margin-top: 10%;
-  height: 500px;
+  width: clamp(225px, 66%, 850px);
+  margin-top: 2.5%;
+  height: 650px;
   margin-right: auto;
   margin-left: auto;
   background: rgba(255, 255, 255, 1);
   color: black;
   position: relative;
   padding-top: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modalFormBody > h3 {
   text-align: center;
   font-size: 2rem;
   color: var(--amethyst);
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -51,7 +53,7 @@
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   font-size: 1.05rem;
 }
@@ -61,8 +63,21 @@
   border: 2px solid skyblue;
 }
 
+.myForm input.inputErr {
+  border: 2px solid rgba(225, 10, 10, 0.66);
+}
+
 .myForm label {
   margin-left: 2px;
+  font-size: 1.1rem;
+}
+
+.errDiv {
+  color: rgba(225, 10, 10, 0.66);
+  height: 25px;
+  margin-left: 2px;
+  font-family: "Ubuntu", "sans-serif";
+  font-weight: 600;
 }
 
 .subButt {

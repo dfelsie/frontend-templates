@@ -8,6 +8,7 @@ import ProfileCard from "../components/Profile/ProfileCard";
 import { backendRoute } from "../consts/consts";
 import { useUser } from "../utils/hooks/useUser";
 import makeFetch, { makeFetchWithCookie } from "../utils/makeFetch";
+import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
 import sessionReq from "../utils/requests/sessionReq";
 
 type Props = {
@@ -16,16 +17,7 @@ type Props = {
 
 export default function Me({ userData }: Props) {
   const router = useRouter();
-  const [user, { mutate }] = useUser();
-  const userEmail = userData?.body;
-  console.log(userData, " ", user, " UD");
-  let body;
-  if (user) {
-    body = <MyProfileCard userEmail={user} />;
-  } else {
-    body = <Home />;
-  }
-
+  const userEmail = userData?.email;
   return (
     <Layout userEmail={userEmail}>
       <MyProfileCard userEmail={userEmail} />
@@ -33,16 +25,16 @@ export default function Me({ userData }: Props) {
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // Fetch data from external API
-  console.log("Cont", context.req.cookies);
-
-  //const userData = await sessionReq();
-  const sessionReq = makeFetchWithCookie(
-    backendRoute + "/auth/user",
-    `connect.sid=${context.req.cookies["connect.sid"]}`
-  );
-  const userData = await sessionReq();
+  const userData = await serverSideSessionReq(context);
   console.log(userData, "Ud");
+  if (!userData?.email) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   // Pass data to the page via props
   return { props: { userData } };
