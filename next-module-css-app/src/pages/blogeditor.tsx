@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import React from "react";
 import BlogPreview from "../components/Blog/BlogPreview";
+import BlogEditor from "../components/BlogEditor/BlogEditor";
 import Layout from "../components/Layout/Layout";
 import { fakeUserData } from "../consts/consts";
 import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
@@ -10,10 +11,14 @@ type Props = {
   userData: any;
 };
 
-export default function blogwriter({ userData }: Props) {
+export default function blogeditor({ userData }: Props) {
   const userEmail = userData?.email;
 
-  return <Layout userEmail={userEmail}></Layout>;
+  return (
+    <Layout userEmail={userEmail}>
+      <BlogEditor />
+    </Layout>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
