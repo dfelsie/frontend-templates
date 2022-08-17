@@ -2,12 +2,12 @@ import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import Home from "../components/Home/Home";
 import Layout from "../components/Layout/Layout";
-import colorConsts from "../consts/colorConsts";
-import { useUser } from "../utils/hooks/useUser";
+import ContextModal from "../components/Modal/ContextModal";
 import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
 type Props = {
   userData: any;
 };
+
 export default function Index({ userData }: Props) {
   //const [user, { mutate }] = useUser();
   const userEmail = userData?.email;

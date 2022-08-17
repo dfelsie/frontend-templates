@@ -25,6 +25,5 @@ export default function blogs({ userData }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userData = await serverSideSessionReq(context);
-  console.log(userData, "Ud");
   return { props: { userData } };
 };
