@@ -2,7 +2,9 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
+import ProfileBody from "../../components/Profile/ProfileBody";
 import ProfileCard from "../../components/Profile/ProfileCard";
+import colors from "../../consts/colorConsts";
 import serverSideSessionReq from "../../utils/requests/serverSideSessionReq";
 
 type Props = {
@@ -14,8 +16,8 @@ export default function Profile({ userData }: Props) {
   const userEmail = userData?.email;
 
   return (
-    <Layout userEmail={userEmail}>
-      <ProfileCard />
+    <Layout color={colors.champagne} userEmail={userEmail}>
+      <ProfileBody />
     </Layout>
   );
 }

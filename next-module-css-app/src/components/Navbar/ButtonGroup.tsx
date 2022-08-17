@@ -18,7 +18,8 @@ export default function ButtonGroup({ userEmail, router }: Props) {
       <>
         <button
           className={sharedStyles.actionButton}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             setsignUpModalVisible(true);
           }}
         >
@@ -30,7 +31,8 @@ export default function ButtonGroup({ userEmail, router }: Props) {
         />
         <button
           className={sharedStyles.actionButton}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             setlogInModalVisible(true);
           }}
         >

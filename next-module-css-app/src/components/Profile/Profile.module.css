@@ -17,6 +17,11 @@
   text-align: center;
   justify-content: center;
   border-radius: 25px;
+  padding-bottom: 10px;
+}
+
+.profPicCard button {
+  margin: auto;
 }
 
 .profSpace {

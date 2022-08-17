@@ -24,5 +24,13 @@ export default function blogeditor({ userData }: Props) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userData = await serverSideSessionReq(context);
   console.log(userData, "Ud");
+  if (!userData?.email) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
   return { props: { userData } };
 };

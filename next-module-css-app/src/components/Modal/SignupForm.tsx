@@ -45,21 +45,53 @@ export default function SignupForm({}: Props) {
         confirmPassword: "",
         email: "",
       }}
+      validateOnChange={false}
       validationSchema={SignupSchema}
-      onSubmit={async (values) => {
+      onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password, username: name } = values;
+        const emailUnique = await makeFetch(
+          backendRoute + "/data/checkifemailunique",
+          { emailToCheck: email },
+          "POST"
+        )();
+        const usernameUnique = await makeFetch(
+          backendRoute + "/data/checkifnameunique",
+          { usernameToCheck: name },
+          "POST"
+        )();
         const fetchFun = makeFetch(
           backendRoute + "/auth/register",
           { email: email, password: password, name: name },
           "POST"
         );
-        fetchFun().then(() => {
-          window.location.reload();
-        });
+        fetchFun()
+          .then((res) => {
+            console.log(res);
+            if (!(emailUnique.emailUnique && usernameUnique.usernameUnique)) {
+              if (!emailUnique.emailUnique) {
+                setErrors({ email: "Email must be unique" });
+              }
+              if (!usernameUnique.usernameUnique) {
+                setErrors({ username: "Username must be unique" });
+              }
+              return;
+            } else {
+              if (!res.success) {
+                setErrors({
+                  email: "We couldn't register you with those credentials",
+                });
+                return;
+              }
+              window.location.reload();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }}
     >
-      {({ isSubmitting, touched, errors }) => (
+      {({ isSubmitting, touched, errors, submitForm }) => (
         <Form className={localStyles.myForm}>
           <label htmlFor="email">Email Address</label>
           <Field
@@ -117,8 +149,8 @@ export default function SignupForm({}: Props) {
             )}
             type="submit"
             onClick={(e) => {
-              window.location.reload();
               //e.preventDefault();
+              //window.location.reload();
             }}
           >
             Submit

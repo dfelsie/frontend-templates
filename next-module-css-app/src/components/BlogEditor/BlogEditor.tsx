@@ -4,11 +4,11 @@ import sharedStyles from "../../sharedStyles.module.css";
 import Tiptap from "./Tiptap";
 type Props = {};
 export default function BlogEditor({}: Props) {
+  //const json = editor.getJSON()
   return (
-    <div>
-      {" "}
+    <div className={localStyles.blogroot}>
       BlogEditor
-      <Tiptap />{" "}
+      <Tiptap />
     </div>
   );
 }

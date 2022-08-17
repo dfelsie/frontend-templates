@@ -37,6 +37,9 @@ export default function FancyCard({}: Props) {
           </div>
         ))}
       </div>
+      <div className={localStyles.actButtCont}>
+        <button className={sharedStyles.actionButton}>Follow</button>
+      </div>
     </div>
   );
 }

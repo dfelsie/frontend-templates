@@ -1,0 +1,53 @@
+.blogRoot {
+  flex-grow: 1;
+}
+.myForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.myForm input {
+  border: 2px solid var(--amethyst);
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+.myForm input:focus {
+  outline: none;
+
+  border: 2px solid skyblue;
+}
+
+.myForm input.inputErr {
+  border: 2px solid rgba(225, 10, 10, 0.66);
+}
+
+.myForm label {
+  margin-left: 2px;
+  font-size: 1.1rem;
+}
+
+.errDiv {
+  color: rgba(225, 10, 10, 0.66);
+  height: 25px;
+  margin-left: 2px;
+  font-family: "Ubuntu", "sans-serif";
+  font-weight: 600;
+}
+
+.subButt {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 75%;
+  height: 30px;
+}

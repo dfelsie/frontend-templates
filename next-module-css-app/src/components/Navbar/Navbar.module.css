@@ -1,14 +1,13 @@
 .navDiv {
   height: 50px;
   width: 100%;
-  padding-right: 5%;
-  padding-left: 5%;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 4;
-  padding-top: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .butGrp {
@@ -22,4 +21,20 @@
   display: flex;
   justify-content: space-around;
   font-size: 1.1rem;
+}
+
+.hamDiv {
+  width: 100%;
+  background-color: var(--denim);
+  height: 100%;
+  z-index: 25;
+  font-size: 2.5rem;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hidNav {
+  opacity: 0;
 }

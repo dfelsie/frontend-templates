@@ -6,6 +6,7 @@ import joinClasses from "../../utils/joinClasses";
 import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Button from "../../widgets/Button/Button";
 type Props = {};
 export default function ProfileCard({}: Props) {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function ProfileCard({}: Props) {
         </div>
         <h2>Johnathon L'Astname</h2>
         <h4>{router.query.id}</h4>
+        <Button isActionButton={true}>Follow</Button>
       </div>
       <div className={localStyles.profSpace}></div>
       <div className={localStyles.profDetails}>

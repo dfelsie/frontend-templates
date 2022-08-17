@@ -24,7 +24,7 @@ export default function LoginForm({}: Props) {
         email: "",
       }}
       validationSchema={LoginSchema}
-      onSubmit={async (values) => {
+      onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password } = values;
         const fetchFun = makeFetch(
@@ -32,7 +32,11 @@ export default function LoginForm({}: Props) {
           { email: email, password: password },
           "POST"
         );
-        fetchFun().then(() => {
+        fetchFun().then((res) => {
+          if (!res.success) {
+            setErrors({ email: "Your email or password is incorrect." });
+            return;
+          }
           window.location.reload();
         });
       }}
@@ -80,6 +84,19 @@ export default function LoginForm({}: Props) {
             }}
           >
             Submit
+          </button>
+          <button
+            className={joinClasses(
+              sharedStyles.actionButton,
+              localStyles.forgotButt
+            )}
+            type="button"
+            onClick={async (e) => {
+              //window.location.reload();
+              e.preventDefault();
+            }}
+          >
+            Forgot Password?
           </button>
         </Form>
       )}

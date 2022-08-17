@@ -1,0 +1,90 @@
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+  height: 100%;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  transition: 0.2s linear;
+  color: black;
+  cursor: default;
+}
+
+.panel li {
+  cursor: pointer;
+}
+
+.panel ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60%;
+  list-style-type: none;
+}
+
+/*Weird move to make button group look good*/
+.panel ul > div {
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+}
+
+.panel ul > div > button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.panel ul h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.panel li::marker {
+  display: none;
+}
+
+.hidd {
+  width: 0;
+}
+
+.hideList {
+  width: 0;
+  overflow-x: hidden;
+}
+
+.panelShow {
+  height: 100px;
+  width: 100px;
+  color: blue;
+}
+
+.arrowIcon {
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  z-index: 6;
+  cursor: pointer;
+}

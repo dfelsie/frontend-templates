@@ -10,9 +10,9 @@
 
 .body {
   flex-grow: 1;
-  padding-right: 5%;
-  padding-left: 5%;
-  padding-top: 10px;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  padding-top: 25px;
   padding-bottom: 25px;
   position: relative;
   display: flex;
