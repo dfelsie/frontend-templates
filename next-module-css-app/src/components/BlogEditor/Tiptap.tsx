@@ -17,47 +17,61 @@ const validateTitleAndBody = (bodyText: string, titleText: string) => {
 const Tiptap = () => {
   const router = useRouter();
   const [titleError, setTitleError] = useState("");
-  const contentEditor = useEditor({
-    extensions: [StarterKit],
-    content: "<p>Hello World! 🌎️</p>",
-  });
   const titleEditor = useEditor({
     extensions: [StarterKit],
-    content: "<p>Hello World! 🌎️</p>",
+    content: "Title",
+  });
+  const contentEditor = useEditor({
+    extensions: [StarterKit],
+    content: "<p>Body Text 🌎️</p>",
   });
 
   return (
     <div>
-      <div>
-        <EditorContent editor={titleEditor} />
+      {/*  <div className={localStyles.titleTextEditorDiv}>
+        <h4>Title</h4>
+        <hr></hr> */}
+      <div className={localStyles.blogCont}>
+        <div className={localStyles.blogHeadDiv}>
+          <EditorContent
+            className={localStyles.titleEditor}
+            editor={titleEditor}
+            rows={2}
+            maxLength={50}
+          />
+        </div>
+        <EditorContent
+          className={localStyles.titleTextEditor}
+          editor={contentEditor}
+        />
       </div>
-      <h4 className={localStyles.errTxt}>{titleError}</h4>
-      <div>
-        <EditorContent editor={contentEditor} />
-      </div>
-      <button
-        className={sharedStyles.actionButton}
-        onClick={async () => {
-          const titleText = titleEditor.getText();
-          const bodyText = contentEditor.getText();
-          if (!validateTitleAndBody(titleText, bodyText)) {
-            setTitleError("Title too short");
-            return;
-          }
-          makeFetch(
-            backendRoute + "/data/addblog",
-            { title: titleText, body: bodyText },
-            "POST"
-          )().then((res) => {
-            if (!res.success) {
+      {/* </div>
+      <h4 className={localStyles.errTxt}>{titleError}</h4> */}
+      <div className={localStyles.flexButt}>
+        <button
+          className={sharedStyles.actionButton}
+          onClick={async () => {
+            const titleText = titleEditor.getText();
+            const bodyText = contentEditor.getText();
+            if (!validateTitleAndBody(titleText, bodyText)) {
+              setTitleError("Title too short");
               return;
             }
-            router.push("/");
-          });
-        }}
-      >
-        Submit
-      </button>
+            makeFetch(
+              backendRoute + "/data/addblog",
+              { title: titleText, body: bodyText },
+              "POST"
+            )().then((res) => {
+              if (!res?.success) {
+                return;
+              }
+              router.push("/");
+            });
+          }}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

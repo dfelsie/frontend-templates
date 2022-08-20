@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
-import { CurrModal, ModalContext } from "../../widgets/AppWrapper/AppWrapper";
+import LoginForm from "../../components/Modal/LoginForm";
+import SignupForm from "../../components/Modal/SignupForm";
+import { CurrModal, ModalContext } from "./AppWrapper";
+
+//Unused bcus old style more convenient,
+//should be fine for future projects
 type Props = {};
 export default function ContextModal({}: Props) {
   const { currModal, setCurrModal } = useContext(ModalContext);

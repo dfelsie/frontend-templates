@@ -33,7 +33,7 @@ export default function LoginForm({}: Props) {
           "POST"
         );
         fetchFun().then((res) => {
-          if (!res.success) {
+          if (!res?.success) {
             setErrors({ email: "Your email or password is incorrect." });
             return;
           }

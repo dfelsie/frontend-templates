@@ -5,24 +5,56 @@ import Layout from "../../components/Layout/Layout";
 import ProfileBody from "../../components/Profile/ProfileBody";
 import ProfileCard from "../../components/Profile/ProfileCard";
 import colors from "../../consts/colorConsts";
+import { backendRoute } from "../../consts/consts";
+import makeFetch from "../../utils/makeFetch";
 import serverSideSessionReq from "../../utils/requests/serverSideSessionReq";
 
 type Props = {
   userData: any;
+  profData: any;
 };
 
-export default function Profile({ userData }: Props) {
+export default function Profile({ userData, profData }: Props) {
   const router = useRouter();
   const userEmail = userData?.email;
+  const userId = userData?.userId;
+  const { name, followers, follows, blogs } = profData;
+  let currUserDoesFollow = false;
+
+  for (let i = 0; i < followers.length; i++) {
+    if (followers[i]?.follower?.email === userEmail) {
+      console.log(followers);
+      currUserDoesFollow = true;
+      break;
+    }
+  }
 
   return (
     <Layout color={colors.champagne} userEmail={userEmail}>
-      <ProfileBody />
+      <ProfileBody
+        userName={name}
+        blogs={blogs}
+        followers={followers}
+        follows={follows}
+        userId={userId}
+        currUserDoesFollow={currUserDoesFollow}
+      />
     </Layout>
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userData = await serverSideSessionReq(context);
-  console.log(userData, "Ud");
-  return { props: { userData } };
+
+  const profData = (
+    await makeFetch(backendRoute + `/data/useroverview/${context.query.id}`)()
+  )?.data;
+  if (!profData?.name) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: { userData, profData } };
 };

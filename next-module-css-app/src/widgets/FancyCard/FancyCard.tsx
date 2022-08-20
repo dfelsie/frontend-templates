@@ -3,11 +3,29 @@ import localStyles from "./FancyCard.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import joinClasses from "../../utils/joinClasses";
 import Image from "next/image";
-type Props = {};
-const cats = ["Posts", "Followers", "Following"];
+import makeFetch, { makeFetchNoBody } from "../../utils/makeFetch";
+import { backendRoute } from "../../consts/consts";
+import { useRouter } from "next/router";
+type Props = {
+  username?: string;
+  postCount: number;
+  followCount: number;
+  followerCount: number;
+  currUserId: string;
+  currUserDoesFollow?: boolean;
+};
+const cats = ["Posts", "Following", "Followers"];
 
 const answs = ["36", "1200", "9"];
-export default function FancyCard({}: Props) {
+export default function FancyCard({
+  username,
+  postCount,
+  followCount,
+  followerCount,
+  currUserId,
+  currUserDoesFollow,
+}: Props) {
+  const router = useRouter();
   return (
     <div className={localStyles.fancyCardBod}>
       <div className={localStyles.headRow}>
@@ -20,7 +38,7 @@ export default function FancyCard({}: Props) {
           <Image src={"/assets/images/kobu.jpg"} layout="fill" />
         </div>
         <div className={localStyles.headText}>
-          <h3>Johnathon L'Astname</h3>
+          <h3>{username ?? "Adam Smith"}</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
             aliquid magni, placeat illo at cupiditate doloribus ut ipsam
@@ -30,16 +48,52 @@ export default function FancyCard({}: Props) {
       </div>
       <hr />
       <div className={localStyles.bodyRowCont}>
-        {cats.map((val, i) => (
-          <div className={localStyles.bodyRow} key={`cardBodyRow${i}`}>
-            <p>{val}</p>
-            <p>{answs[i]}</p>
-          </div>
-        ))}
+        <div className={localStyles.bodyRow}>
+          <p>{cats[0]}</p>
+          <p>{postCount}</p>
+        </div>
+        <div className={localStyles.bodyRow}>
+          <p>{cats[1]}</p>
+          <p>{followCount}</p>
+        </div>
+        <div className={localStyles.bodyRow}>
+          <p>{cats[2]}</p>
+          <p>{followerCount}</p>
+        </div>
       </div>
-      <div className={localStyles.actButtCont}>
-        <button className={sharedStyles.actionButton}>Follow</button>
-      </div>
+      {currUserId && (
+        <div className={localStyles.actButtCont}>
+          <button
+            onClick={
+              currUserDoesFollow
+                ? async () => {
+                    console.log("Follow");
+                    const mf = makeFetchNoBody(
+                      backendRoute + "/data/deletefollow/" + username,
+                      "DELETE"
+                    );
+                    mf();
+                  }
+                : async () => {
+                    console.log("Follow");
+                    const mf = makeFetch(
+                      backendRoute + "/data/addfollow",
+                      {
+                        followerId: currUserId,
+                        followingId: router.query.id,
+                        followingName: username,
+                      },
+                      "POST"
+                    );
+                    mf();
+                  }
+            }
+            className={sharedStyles.actionButton}
+          >
+            {currUserDoesFollow ? "Following" : "Follow"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

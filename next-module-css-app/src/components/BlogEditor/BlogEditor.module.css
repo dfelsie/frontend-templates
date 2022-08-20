@@ -51,3 +51,70 @@
   width: 75%;
   height: 30px;
 }
+
+.titleTextEditorDiv {
+  border: 1.5px solid slategray;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleTextEditorDiv > hr {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 0px;
+  border: 2px solid black;
+}
+
+.titleTextEditorDiv > h4 {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.titleTextEditor {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* The actual input */
+.titleTextEditor > div {
+  width: 100%;
+  height: 100%;
+  /*  */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  flex-grow: 1;
+}
+
+.blogCont {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid black;
+  height: 350px;
+}
+
+.blogHeadDiv {
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.blogHeadDiv > div {
+  margin-top: -20px;
+}
+
+.blogHeadDiv > div > div {
+  height: 50px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.flexButt {
+  display: flex;
+}

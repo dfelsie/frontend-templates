@@ -4,12 +4,21 @@ import sharedStyles from "../../sharedStyles.module.css";
 import joinClasses from "../../utils/joinClasses";
 import Image from "next/image";
 import Link from "next/link";
-type Props = {};
+import { frontendRoute } from "../../consts/consts";
+type Props = {
+  blogs: any[];
+  followers: any[];
+  follows: any[];
+};
 const names = ["John Smith", "John Smith", "John Smith", "John Smith"];
 const blogString =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus necessitatibus tempora sed officia quidem aspernatur voluptates, non eum temporibus doloremque molestias ducimus. Dolorum eos maiores minima explicabo aliquid, non at!";
 const blogStrings = ["Blog 1", "Blog 1", "Blog 1", "Blog 1"];
-export default function FancyOverviewCard({}: Props) {
+export default function FancyOverviewCard({
+  blogs,
+  followers,
+  follows,
+}: Props) {
   return (
     <div
       className={joinClasses(
@@ -21,8 +30,8 @@ export default function FancyOverviewCard({}: Props) {
         <h4>Blogs</h4>
         <ul className={localStyles.overviewList}>
           <li>
-            {blogStrings.map((val, i) => (
-              <BlogLink blogname={val} key={`blogLinkNum${i}`} />
+            {blogs.map((val, i) => (
+              <BlogLink blogname={val.title} key={`blogLinkNum${i}`} />
             ))}
           </li>
         </ul>
@@ -33,9 +42,10 @@ export default function FancyOverviewCard({}: Props) {
       <div className={localStyles.overviewSec}>
         <h4>Following</h4>
         <div className={localStyles.overviewSecGrid}>
-          {names.map((val, i) => (
+          {follows.map((val, i) => (
             <ProfWidget
-              username={val}
+              profId={`${val.id}`}
+              username={val.followingName}
               key={`followerNum${i}`}
               imgSrc={"/assets/images/kobu.jpg"}
             />
@@ -46,11 +56,12 @@ export default function FancyOverviewCard({}: Props) {
         </div>{" "}
       </div>
       <div>
-        <h4>Fpllo</h4>
+        <h4>Followers</h4>
         <div className={localStyles.overviewSecGrid}>
-          {names.map((val, i) => (
+          {followers.map((val, i) => (
             <ProfWidget
-              username={val}
+              profId={`${val.follower.id}`}
+              username={val.followerName}
               key={`followerNum${i}`}
               imgSrc={"/assets/images/kobu.jpg"}
             />
@@ -66,11 +77,11 @@ export default function FancyOverviewCard({}: Props) {
 type ProfWidgetProps = {
   imgSrc?: string;
   username: string;
-  profLink?: string;
+  profId?: string;
 };
-function ProfWidget({ imgSrc, username, profLink }: ProfWidgetProps) {
+function ProfWidget({ imgSrc, username, profId }: ProfWidgetProps) {
   return (
-    <Link href={profLink ?? "/"}>
+    <Link href={`${frontendRoute}/profile/${profId}` ?? "/"}>
       <div className={localStyles.otherAva}>
         <div
           className={joinClasses(

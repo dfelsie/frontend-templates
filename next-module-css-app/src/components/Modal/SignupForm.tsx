@@ -77,7 +77,7 @@ export default function SignupForm({}: Props) {
               }
               return;
             } else {
-              if (!res.success) {
+              if (!res?.success) {
                 setErrors({
                   email: "We couldn't register you with those credentials",
                 });

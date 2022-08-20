@@ -3,7 +3,7 @@ import localStyles from "./Layout.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import ContextModal from "../Modal/ContextModal";
+import ContextModal from "../../widgets/AppWrapper/ContextModal";
 type Props = {
   children?: ReactNode;
   color?: string;
@@ -26,7 +26,6 @@ export default function Layout({
     >
       <Navbar userEmail={userEmail} />
       <div className={localStyles.body}>{children}</div>
-      <ContextModal />
 
       <Footer />
     </div>

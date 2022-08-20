@@ -1,5 +1,5 @@
-export const backendRoute = "http://localhost:3011/api/v1";
-
+export const backendRoute = "http://localhost:3012/api/v1";
+export const frontendRoute = "http://localhost:3018";
 export const fakeUserData = {
   id: "48983980",
   email: "binfusboozer@gmail.com",
