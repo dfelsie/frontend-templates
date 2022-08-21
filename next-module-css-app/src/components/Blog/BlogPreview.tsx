@@ -8,7 +8,7 @@ import BlogSec from "./BlogSec";
 type Props = {
   blogs: Blog[];
 };
-export default function BlogPreview({ blogs }: Props) {
+export default function BlogPreviewList({ blogs }: Props) {
   return (
     <div>
       {" "}

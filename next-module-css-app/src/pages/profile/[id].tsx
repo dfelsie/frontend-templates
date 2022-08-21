@@ -20,10 +20,10 @@ export default function Profile({ userData, profData }: Props) {
   const userId = userData?.userId;
   const { name, followers, follows, blogs } = profData;
   let currUserDoesFollow = false;
+  console.log(followers);
 
   for (let i = 0; i < followers.length; i++) {
     if (followers[i]?.follower?.email === userEmail) {
-      console.log(followers);
       currUserDoesFollow = true;
       break;
     }

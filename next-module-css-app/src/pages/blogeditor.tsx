@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
-import BlogPreview from "../components/Blog/BlogPreview";
+import BlogPreviewList from "../components/Blog/BlogPreview";
 import BlogEditor from "../components/BlogEditor/BlogEditor";
 import Layout from "../components/Layout/Layout";
 import { fakeUserData } from "../consts/consts";

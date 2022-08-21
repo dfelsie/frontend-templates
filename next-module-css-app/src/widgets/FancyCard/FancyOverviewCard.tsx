@@ -31,7 +31,7 @@ export default function FancyOverviewCard({
         <ul className={localStyles.overviewList}>
           <li>
             {blogs.map((val, i) => (
-              <BlogLink blogname={val.title} key={`blogLinkNum${i}`} />
+              <BlogLink blog={val} key={`blogLinkNum${i}`} />
             ))}
           </li>
         </ul>
@@ -98,14 +98,13 @@ function ProfWidget({ imgSrc, username, profId }: ProfWidgetProps) {
 }
 
 type BlogLinkProps = {
-  blogText?: string;
-  blogname: string;
+  blog: any;
 };
-function BlogLink({ blogname, blogText }: BlogLinkProps) {
+function BlogLink({ blog }: BlogLinkProps) {
   return (
-    <Link href="/">
+    <Link href={`/blog/${blog.id}`}>
       <div className={localStyles.blogLink}>
-        <h6>{blogname}</h6>
+        <h6>{blog.title}</h6>
         <p>
           {blogString.slice(0, 50) + "..."}{" "}
           <span className={localStyles.arrowIcon}>&#8594;</span>{" "}

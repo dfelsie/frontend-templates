@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
-import BlogPreview from "../../../components/Blog/BlogPreview";
+import BlogPreviewList from "../../../components/Blog/BlogPreview";
 import Layout from "../../../components/Layout/Layout";
 import { fakeUserData } from "../../../consts/consts";
 import { useUser } from "../../../utils/hooks/useUser";
@@ -18,7 +18,7 @@ export default function blogs({ userData }: Props) {
     <Layout userEmail={userEmail}>
       <UserNavbar />
 
-      <BlogPreview blogs={fakeUserData.posts}></BlogPreview>
+      <BlogPreviewList blogs={fakeUserData.posts}></BlogPreviewList>
     </Layout>
   );
 }
