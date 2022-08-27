@@ -32,13 +32,17 @@ export default function LoginForm({}: Props) {
           { email: email, password: password },
           "POST"
         );
-        fetchFun().then((res) => {
-          if (!res?.success) {
-            setErrors({ email: "Your email or password is incorrect." });
-            return;
-          }
-          window.location.reload();
-        });
+        fetchFun()
+          .then((res) => {
+            if (!res?.success) {
+              setErrors({ email: "Your email or password is incorrect." });
+              return;
+            }
+            window.location.reload();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }}
     >
       {({ isSubmitting, errors, touched }) => (

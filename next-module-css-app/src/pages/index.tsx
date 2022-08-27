@@ -19,7 +19,7 @@ export default function Index({ userData }: Props) {
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = (await serverSideSessionReq(context)) ?? null;
   console.log(userData, "Ud");
   return { props: { userData } };
 };

@@ -12,7 +12,15 @@ COPY src ./src
 
 COPY public ./public
 
-RUN npm install
+RUN npm ci
+
+RUN npm run build
+
+COPY .next ./.next
+
+COPY next-env.d.ts next-env.d.ts
+
+#COPY .next .next
 
 EXPOSE 3018
 
