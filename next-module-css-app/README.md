@@ -4,12 +4,11 @@ Comments?
 
 Double check auth edge cases
 
-Better landing page
-
-Memoize/check callbacks
-
 Elastic search?
 
 UI overhaul for blog editor, blog viewer, and landing page
+(Done-ish)
 
-Containerize
+Fix requests
+
+API documentation

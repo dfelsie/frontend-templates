@@ -7,7 +7,6 @@ import MyProfileCard from "../components/Profile/MyProfileCard";
 import ProfileCard from "../components/Profile/ProfileCard";
 import { backendRoute } from "../consts/consts";
 import { useUser } from "../utils/hooks/useUser";
-import makeFetch, { makeFetchWithCookie } from "../utils/makeFetch";
 import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
 import sessionReq from "../utils/requests/sessionReq";
 
