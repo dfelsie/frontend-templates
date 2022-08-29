@@ -1,5 +1,12 @@
-import { backendRoute } from "../../consts/consts";
-import makeFetch from "../makeFetch";
+import { backendRoute, stdHeader } from "../../consts/consts";
 
-const logoutReq = makeFetch(backendRoute + "/auth/logout");
-export default logoutReq;
+export default async function logoutReq() {
+  {
+    return await fetch(backendRoute + "/auth/logout", {
+      method: "GET",
+      ...stdHeader,
+    })
+      .then((r) => r.json())
+      .catch((err) => console.error(err));
+  }
+}

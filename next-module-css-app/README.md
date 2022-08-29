@@ -10,5 +10,6 @@ UI overhaul for blog editor, blog viewer, and landing page
 (Done-ish)
 
 Fix requests
+(Should be done)
 
 API documentation
