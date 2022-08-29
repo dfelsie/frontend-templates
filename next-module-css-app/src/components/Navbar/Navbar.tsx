@@ -20,10 +20,12 @@ export default function Navbar({ userEmail }: Props) {
     <>
       <ButtonGroup userEmail={userEmail} router={router} />
       <div className={localStyles.linkGrp}>
-        <a className={joinClasses("aniLink", localStyles.navLink)} href="/bing">
+        <a className={joinClasses("aniLink", localStyles.navLink)} href="/">
           Home
         </a>
-        <a className={joinClasses("aniLink", localStyles.navLink)}>Profile</a>
+        <a className={joinClasses("aniLink", localStyles.navLink)} href="/me">
+          Profile
+        </a>
         <a className={joinClasses("aniLink", localStyles.navLink)}>Blogs</a>
         <a className={joinClasses("aniLink", localStyles.navLink)}>Users</a>
       </div>

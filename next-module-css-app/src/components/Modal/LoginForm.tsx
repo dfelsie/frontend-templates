@@ -3,9 +3,8 @@ import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import { Field, Form, Formik } from "formik";
 import joinClasses from "../../utils/joinClasses";
-import { backendRoute } from "../../consts/consts";
-import makeFetch from "../../utils/makeFetch";
 import * as Yup from "yup";
+import loginReq from "../../utils/requests/loginReq";
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
@@ -27,12 +26,7 @@ export default function LoginForm({}: Props) {
       onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password } = values;
-        const fetchFun = makeFetch(
-          backendRoute + "/auth/login",
-          { email: email, password: password },
-          "POST"
-        );
-        fetchFun()
+        loginReq(email, password)
           .then((res) => {
             if (!res?.success) {
               setErrors({ email: "Your email or password is incorrect." });

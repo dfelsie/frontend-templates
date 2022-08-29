@@ -3,9 +3,9 @@ import localStyles from "./FancyCard.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import joinClasses from "../../utils/joinClasses";
 import Image from "next/image";
-import makeFetch, { makeFetchNoBody } from "../../utils/makeFetch";
-import { backendRoute } from "../../consts/consts";
 import { useRouter } from "next/router";
+import deleteFollow from "../../utils/requests/deleteFollow";
+import addFollow from "../../utils/requests/addFollow";
 type Props = {
   username?: string;
   postCount: number;
@@ -68,29 +68,20 @@ export default function FancyCard({
               currUserDoesFollow
                 ? async () => {
                     console.log("Follow");
-                    const mf = makeFetchNoBody(
-                      backendRoute + "/data/deletefollow/" + username,
-                      "DELETE"
-                    );
-                    mf();
+                    await deleteFollow(username);
                   }
                 : async () => {
                     console.log("Follow");
-                    const mf = makeFetch(
-                      backendRoute + "/data/addfollow",
-                      {
-                        followerId: currUserId,
-                        followingId: router.query.id,
-                        followingName: username,
-                      },
-                      "POST"
+                    await addFollow(
+                      currUserId,
+                      router.query.id as string,
+                      username
                     );
-                    mf();
                   }
             }
             className={sharedStyles.actionButton}
           >
-            {currUserDoesFollow ? "Following" : "Follow"}
+            {currUserDoesFollow ? "Unfollow" : "Follow"}
           </button>
         </div>
       )}

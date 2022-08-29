@@ -75,3 +75,10 @@ export const fakeUserData = {
     },
   ],
 };
+export const stdHeader: RequestInit = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+  referrerPolicy: "no-referrer",
+  credentials: "include",
+};

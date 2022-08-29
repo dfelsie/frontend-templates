@@ -5,8 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import ProfileBody from "../../components/Profile/ProfileBody";
 import ProfileCard from "../../components/Profile/ProfileCard";
 import colors from "../../consts/colorConsts";
-import { backendRoute } from "../../consts/consts";
-import makeFetch from "../../utils/makeFetch";
+import getProfData from "../../utils/requests/getProfData";
 import serverSideSessionReq from "../../utils/requests/serverSideSessionReq";
 
 type Props = {
@@ -45,9 +44,7 @@ export default function Profile({ userData, profData }: Props) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userData = await serverSideSessionReq(context);
 
-  const profData = (
-    await makeFetch(backendRoute + `/data/useroverview/${context.query.id}`)()
-  )?.data;
+  const profData = (await getProfData(context.query.id as string))?.data;
   if (!profData?.name) {
     return {
       redirect: {

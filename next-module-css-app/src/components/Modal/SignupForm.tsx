@@ -3,9 +3,11 @@ import localStyles from "./Modal.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import { Field, Form, Formik, useFormik } from "formik";
 import joinClasses from "../../utils/joinClasses";
-import makeFetch from "../../utils/makeFetch";
 import { backendRoute } from "../../consts/consts";
 import * as Yup from "yup";
+import emailUniqueReq from "../../utils/requests/emailUniqueReq";
+import usernameUniqueReq from "../../utils/requests/usernameUniqueReq";
+import registerReq from "../../utils/requests/registerReq";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -50,22 +52,9 @@ export default function SignupForm({}: Props) {
       onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password, username: name } = values;
-        const emailUnique = await makeFetch(
-          backendRoute + "/data/checkifemailunique",
-          { emailToCheck: email },
-          "POST"
-        )();
-        const usernameUnique = await makeFetch(
-          backendRoute + "/data/checkifnameunique",
-          { usernameToCheck: name },
-          "POST"
-        )();
-        const fetchFun = makeFetch(
-          backendRoute + "/auth/register",
-          { email: email, password: password, name: name },
-          "POST"
-        );
-        fetchFun()
+        const emailUnique = await emailUniqueReq(email);
+        const usernameUnique = await usernameUniqueReq(name);
+        registerReq(email, password, name)
           .then((res) => {
             console.log(res);
             if (!(emailUnique.emailUnique && usernameUnique.usernameUnique)) {

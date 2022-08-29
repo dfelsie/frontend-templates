@@ -1,8 +1,8 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function sessionReq() {
+export default async function getProfData(profId: string) {
   {
-    return await fetch(backendRoute + "/auth/user", {
+    return await fetch(`${backendRoute}/data/useroverview/${profId}`, {
       method: "GET",
       ...stdHeader,
     })

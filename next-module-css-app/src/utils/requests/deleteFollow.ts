@@ -1,9 +1,9 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function sessionReq() {
+export default async function deleteFollow(username: string) {
   {
-    return await fetch(backendRoute + "/auth/user", {
-      method: "GET",
+    return await fetch(`${backendRoute}/data/deletefollow/${username}`, {
+      method: "DELETE",
       ...stdHeader,
     })
       .then((r) => r.json())

@@ -3,9 +3,9 @@ import StarterKit from "@tiptap/starter-kit";
 import localStyles from "./BlogEditor.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import { useState } from "react";
-import makeFetch from "../../utils/makeFetch";
 import { backendRoute } from "../../consts/consts";
 import { useRouter } from "next/router";
+import addBlog from "../../utils/requests/addBlog";
 
 const validateTitleAndBody = (bodyText: string, titleText: string) => {
   if (titleText.length < 2) {
@@ -57,11 +57,7 @@ const Tiptap = () => {
               setTitleError("Title too short");
               return;
             }
-            makeFetch(
-              backendRoute + "/data/addblog",
-              { title: titleText, body: bodyText },
-              "POST"
-            )().then((res) => {
+            addBlog(titleText, bodyText).then((res) => {
               if (!res?.success) {
                 return;
               }

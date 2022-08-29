@@ -9,7 +9,6 @@ type Props = {
 };
 
 export default function Index({ userData }: Props) {
-  //const [user, { mutate }] = useUser();
   const userEmail = userData?.email;
 
   return (

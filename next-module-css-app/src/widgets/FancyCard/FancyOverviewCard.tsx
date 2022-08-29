@@ -36,7 +36,7 @@ export default function FancyOverviewCard({
           </li>
         </ul>
         <div className={localStyles.actButtCont}>
-          <button className={sharedStyles.actionButton}>Follow</button>
+          <button className={sharedStyles.actionButton}>View All</button>
         </div>
       </div>
       <div className={localStyles.overviewSec}>
@@ -52,7 +52,7 @@ export default function FancyOverviewCard({
           ))}
         </div>
         <div className={localStyles.actButtCont}>
-          <button className={sharedStyles.actionButton}>Follow</button>
+          <button className={sharedStyles.actionButton}>View All</button>
         </div>{" "}
       </div>
       <div>
@@ -68,7 +68,7 @@ export default function FancyOverviewCard({
           ))}
         </div>
         <div className={localStyles.actButtCont}>
-          <button className={sharedStyles.actionButton}>Follow</button>
+          <button className={sharedStyles.actionButton}>View All</button>
         </div>{" "}
       </div>
     </div>

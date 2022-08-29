@@ -3,7 +3,6 @@ import React from "react";
 import BlogPreviewList from "../../../components/Blog/BlogPreview";
 import Layout from "../../../components/Layout/Layout";
 import { fakeUserData } from "../../../consts/consts";
-import { useUser } from "../../../utils/hooks/useUser";
 import serverSideSessionReq from "../../../utils/requests/serverSideSessionReq";
 import UserNavbar from "../../../widgets/UserNavBar/UserNavbar";
 
