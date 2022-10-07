@@ -18,9 +18,7 @@ export default function HamburgerMenu({ children }: Props) {
       <div className={localStyles.hamIcon}>&#9776;</div>
       <SideAccordion
         showAccordion={showAccordion}
-        setShowAccordion={() => {
-          setShowAccordion;
-        }}
+        setShowAccordion={setShowAccordion}
       />
     </div>
   );

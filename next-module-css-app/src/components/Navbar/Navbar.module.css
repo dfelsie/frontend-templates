@@ -35,6 +35,29 @@
   cursor: pointer;
 }
 
+.searchDiv {
+  width: 33%;
+  position: relative;
+}
+
+.searchInput {
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 175px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.searchIcon {
+  position: absolute;
+  bottom: 2.5px;
+  font-size: 28px;
+  left: 25px;
+}
+
 .hidNav {
   opacity: 0;
 }

@@ -8,6 +8,7 @@ export default async function usernameUniqueReq(usernameToCheck: string) {
       ...stdHeader,
     })
       .then((r) => r.json())
+      .then((r) => r.data)
       .catch((err) => console.error(err));
   }
 }

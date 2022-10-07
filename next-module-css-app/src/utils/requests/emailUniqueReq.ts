@@ -8,6 +8,7 @@ export default async function emailUniqueReq(emailToCheck: string) {
       ...stdHeader,
     })
       .then((r) => r.json())
+      .then((r) => r.data)
       .catch((err) => console.error(err));
   }
 }

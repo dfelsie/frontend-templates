@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import joinClasses from "../../utils/joinClasses";
 import useQuery from "../../utils/hooks/useQuery";
 import HamburgerMenu from "./HamburgerMenu";
+import NavbarSearch from "./NavbarSearch";
 type Props = {
   userEmail?: string;
 };
@@ -19,6 +20,7 @@ export default function Navbar({ userEmail }: Props) {
   let navBody = (
     <>
       <ButtonGroup userEmail={userEmail} router={router} />
+      <NavbarSearch searchRouter={router} />
       <div className={localStyles.linkGrp}>
         <a className={joinClasses("aniLink", localStyles.navLink)} href="/">
           Home
@@ -38,5 +40,5 @@ export default function Navbar({ userEmail }: Props) {
       </div>
     );
   }
-  return <div className={localStyles.navDiv}> {navBody}</div>;
+  return <header className={localStyles.navDiv}> {navBody}</header>;
 }
