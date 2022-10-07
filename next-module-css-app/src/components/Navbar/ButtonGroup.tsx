@@ -3,7 +3,7 @@ import localStyles from "./Navbar.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
 import LogInModal from "../Modal/LogInModal";
 import SignUpModal from "../Modal/SignUpModal";
-import logoutReq from "../../utils/requests/logoutReq";
+import getLogout from "../../utils/requests/getLogout";
 import { NextRouter, useRouter } from "next/router";
 type Props = {
   userEmail?: string;
@@ -50,7 +50,7 @@ export default function ButtonGroup({ userEmail, router }: Props) {
       <button
         className={sharedStyles.actionButton}
         onClick={async () => {
-          logoutReq().then(() => {
+          getLogout().then(() => {
             window.location.reload();
           });
           //router.push("/");

@@ -4,7 +4,7 @@ import sharedStyles from "../../sharedStyles.module.css";
 import { Field, Form, Formik } from "formik";
 import joinClasses from "../../utils/joinClasses";
 import * as Yup from "yup";
-import loginReq from "../../utils/requests/loginReq";
+import postLogin from "../../utils/requests/postLogin";
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
@@ -26,7 +26,7 @@ export default function LoginForm({}: Props) {
       onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password } = values;
-        loginReq(email, password)
+        postLogin(email, password)
           .then((res) => {
             if (!res?.success) {
               setErrors({ email: "Your email or password is incorrect." });

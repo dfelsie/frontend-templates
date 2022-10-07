@@ -5,7 +5,7 @@ import sharedStyles from "../../sharedStyles.module.css";
 import { useState } from "react";
 import { backendRoute } from "../../consts/consts";
 import { useRouter } from "next/router";
-import addBlog from "../../utils/requests/addBlog";
+import postBlog from "../../utils/requests/postBlog";
 
 const validateTitleAndBody = (bodyText: string, titleText: string) => {
   if (titleText.length < 2) {
@@ -57,7 +57,7 @@ const Tiptap = () => {
               setTitleError("Title too short");
               return;
             }
-            addBlog(titleText, bodyText).then((res) => {
+            postBlog(titleText, bodyText).then((res) => {
               if (!res?.success) {
                 return;
               }

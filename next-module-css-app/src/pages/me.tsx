@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import MyProfileCard from "../components/Profile/MyProfileCard";
-import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
+import getServerSideSessionReq from "../utils/requests/getServerSideSessionReq";
 
 type Props = {
   userData: any;
@@ -19,7 +19,7 @@ export default function Me({ userData }: Props) {
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = await getServerSideSessionReq(context);
   console.log(userData, "Ud");
   if (!userData?.email) {
     return {

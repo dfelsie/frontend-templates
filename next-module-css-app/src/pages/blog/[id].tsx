@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import localStyles from "./blog.module.css";
 import sharedStyles from "../../sharedStyles.module.css";
-import serverSideSessionReq from "../../utils/requests/serverSideSessionReq";
+import getServerSideSessionReq from "../../utils/requests/getServerSideSessionReq";
 import { GetServerSideProps } from "next/types";
 import { Blog as BlogType } from "../../types/Blog";
 import BlogView from "../../components/Blog/BlogView";
@@ -22,7 +22,7 @@ export default function Blog({ userData, blog }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = await getServerSideSessionReq(context);
   const blogId = context.params.id;
   const blogData = (await getBlog(blogId as string)).data?.blog;
   if (!blogData) {

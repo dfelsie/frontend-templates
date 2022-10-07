@@ -1,8 +1,8 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function logoutReq() {
+export default async function getSearchBlogTitles(searchQuery: string) {
   {
-    return await fetch(backendRoute + "/auth/logout", {
+    return await fetch(`${backendRoute}/search/blogtitle?q=${searchQuery}`, {
       method: "GET",
       ...stdHeader,
     })

@@ -1,10 +1,10 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function loginReq(email: string, password: string) {
+export default async function postBlog(title: string, body: string) {
   {
-    return await fetch(backendRoute + "/auth/login", {
+    return await fetch(backendRoute + "/data/addblog", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ title: title, bodyText: body }),
       ...stdHeader,
     })
       .then((r) => r.json())

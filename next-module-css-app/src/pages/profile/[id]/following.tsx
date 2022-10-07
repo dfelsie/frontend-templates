@@ -3,7 +3,7 @@ import React from "react";
 import Follows from "../../../components/Follows/Follows";
 import Layout from "../../../components/Layout/Layout";
 import { fakeUserData } from "../../../consts/consts";
-import serverSideSessionReq from "../../../utils/requests/serverSideSessionReq";
+import getServerSideSessionReq from "../../../utils/requests/getServerSideSessionReq";
 
 type Props = {
   userData: any;
@@ -19,7 +19,7 @@ export default function following({ userData }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = await getServerSideSessionReq(context);
   console.log(userData, "Ud");
   return { props: { userData } };
 };

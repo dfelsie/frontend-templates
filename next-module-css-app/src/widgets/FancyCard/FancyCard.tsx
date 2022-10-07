@@ -5,7 +5,7 @@ import joinClasses from "../../utils/joinClasses";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import deleteFollow from "../../utils/requests/deleteFollow";
-import addFollow from "../../utils/requests/addFollow";
+import postFollow from "../../utils/requests/postFollow";
 type Props = {
   username?: string;
   postCount: number;
@@ -72,7 +72,7 @@ export default function FancyCard({
                   }
                 : async () => {
                     console.log("Follow");
-                    await addFollow(
+                    await postFollow(
                       currUserId,
                       router.query.id as string,
                       username

@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { backendRoute } from "../../consts/consts";
 import makeFetch, { makeFetchNoUrl as makeFetchTakesUrl } from "../makeFetch";
-import sessionReq from "../requests/sessionReq";
+import getSessionReq from "../requests/getSessionReq";
 export const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export function useUser() {

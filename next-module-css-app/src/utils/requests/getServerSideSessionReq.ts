@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from "querystring";
 import { backendRoute, stdHeader } from "../../consts/consts";
 import { makeFetchWithCookie } from "../makeFetch";
 
-export default async function serverSideSessionReq(
+export default async function getServerSideSessionReq(
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
 ) {
   //Hacky way to get redis session id and set it on request

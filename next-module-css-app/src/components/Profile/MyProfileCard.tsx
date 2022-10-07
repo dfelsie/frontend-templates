@@ -6,7 +6,7 @@ import joinClasses from "../../utils/joinClasses";
 import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import sessionReq from "../../utils/requests/sessionReq";
+import getSessionReq from "../../utils/requests/getSessionReq";
 type Props = {
   userEmail?: string;
 };

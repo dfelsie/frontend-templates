@@ -1,6 +1,6 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function registerReq(
+export default async function postRegisterUser(
   email: string,
   password: string,
   name: string

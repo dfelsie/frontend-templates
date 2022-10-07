@@ -6,7 +6,7 @@ import ProfileBody from "../../components/Profile/ProfileBody";
 import ProfileCard from "../../components/Profile/ProfileCard";
 import colors from "../../consts/colorConsts";
 import getProfData from "../../utils/requests/getProfData";
-import serverSideSessionReq from "../../utils/requests/serverSideSessionReq";
+import getServerSideSessionReq from "../../utils/requests/getServerSideSessionReq";
 
 type Props = {
   userData: any;
@@ -42,7 +42,7 @@ export default function Profile({ userData, profData }: Props) {
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = await getServerSideSessionReq(context);
 
   const profData = (await getProfData(context.query.id as string))?.data;
   if (!profData?.name) {

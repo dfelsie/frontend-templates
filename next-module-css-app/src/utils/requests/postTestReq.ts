@@ -1,6 +1,6 @@
 import { backendRoute } from "../../consts/consts";
 
-export default async function testReq() {
+export default async function postTestReq() {
   await fetch(backendRoute + "/test", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin

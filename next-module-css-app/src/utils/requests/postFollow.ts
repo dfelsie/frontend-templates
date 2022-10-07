@@ -1,6 +1,6 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function addFollow(
+export default async function postFollow(
   followerId: string,
   followingId: string,
   followingName: string

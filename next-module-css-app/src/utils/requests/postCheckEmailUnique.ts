@@ -1,10 +1,10 @@
 import { backendRoute, stdHeader } from "../../consts/consts";
 
-export default async function usernameUniqueReq(usernameToCheck: string) {
+export default async function postCheckEmailUnique(emailToCheck: string) {
   {
-    return await fetch(backendRoute + "/data/checkifnameunique", {
+    return await fetch(backendRoute + "/data/checkifemailunique", {
       method: "POST",
-      body: JSON.stringify({ usernameToCheck }),
+      body: JSON.stringify({ emailToCheck }),
       ...stdHeader,
     })
       .then((r) => r.json())

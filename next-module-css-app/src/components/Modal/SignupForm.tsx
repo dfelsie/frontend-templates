@@ -5,9 +5,9 @@ import { Field, Form, Formik, useFormik } from "formik";
 import joinClasses from "../../utils/joinClasses";
 import { backendRoute } from "../../consts/consts";
 import * as Yup from "yup";
-import emailUniqueReq from "../../utils/requests/emailUniqueReq";
-import usernameUniqueReq from "../../utils/requests/usernameUniqueReq";
-import registerReq from "../../utils/requests/registerReq";
+import postCheckEmailUnique from "../../utils/requests/postCheckEmailUnique";
+import postCheckUsernameUniqueReq from "../../utils/requests/postCheckUsernameUniqueReq";
+import postRegisterUser from "../../utils/requests/postRegisterUser";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -52,9 +52,9 @@ export default function SignupForm({}: Props) {
       onSubmit={async (values, { setErrors }) => {
         console.log("Bungus");
         const { email, password, username: name } = values;
-        const emailUnique = await emailUniqueReq(email);
-        const usernameUnique = await usernameUniqueReq(name);
-        registerReq(email, password, name)
+        const emailUnique = await postCheckEmailUnique(email);
+        const usernameUnique = await postCheckUsernameUniqueReq(name);
+        postRegisterUser(email, password, name)
           .then((res) => {
             console.log(res);
             if (!(emailUnique.emailUnique && usernameUnique.usernameUnique)) {

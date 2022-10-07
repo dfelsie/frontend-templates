@@ -4,7 +4,7 @@ import BlogPreviewList from "../components/Blog/BlogPreview";
 import BlogEditor from "../components/BlogEditor/BlogEditor";
 import Layout from "../components/Layout/Layout";
 import { fakeUserData } from "../consts/consts";
-import serverSideSessionReq from "../utils/requests/serverSideSessionReq";
+import getServerSideSessionReq from "../utils/requests/getServerSideSessionReq";
 import UserNavbar from "../widgets/UserNavBar/UserNavbar";
 
 type Props = {
@@ -22,7 +22,7 @@ export default function blogeditor({ userData }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const userData = await serverSideSessionReq(context);
+  const userData = await getServerSideSessionReq(context);
   console.log(userData, "Ud");
   if (!userData?.email) {
     return {
